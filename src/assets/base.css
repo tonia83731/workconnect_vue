@@ -1,0 +1,124 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  /* Light Mode Defaults */
+  --background: #ffffff;
+  --card-background: #ffffff;
+  --foreground: #0f172a;
+  --foreground-secondary: #64748b;
+  --foreground-disabled: #cbd5e1;
+
+  --action-background: #4f46e5;
+  --action-text: #ffffff;
+  --action-disabled: #a5b4fc;
+
+  --action-background-secondary: #f1f5f9;
+  --action-text-secondary: #334155;
+  --action-secondary-disabled: #f8fafc;
+
+  --border: #e2e8f0;
+  --border-secondary: #f1f5f9;
+  --border-disabled: #f8fafc;
+
+  --input-background: #ffffff;
+  --input-foreground: #0f172a;
+  --input-placeholder: #94a3b8;
+  --input-border: #cbd5e1;
+  --input-disabled: #f1f5f9;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
+}
+
+.dark {
+  /* Dark Mode Overrides */
+  --background: #0f172a;
+  --card-background: #1e293b;
+  --foreground: #f8fafc;
+  --foreground-secondary: #94a3b8;
+  --foreground-disabled: #475569;
+
+  --action-background: #6366f1;
+  --action-text: #ffffff;
+  --action-disabled: #4338ca;
+
+  --action-background-secondary: #1e293b;
+  --action-text-secondary: #e2e8f0;
+  --action-secondary-disabled: #0f172a;
+
+  --border: #1e293b;
+  --border-secondary: #334155;
+  --border-disabled: #1e293b;
+
+  --input-background: #1e293b;
+  --input-foreground: #f8fafc;
+  --input-placeholder: #64748b;
+  --input-border: #334155;
+  --input-disabled: #0f172a;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -1px rgb(0 0 0 / 0.3);
+}
+
+/* semantic color variables for this project */
+/* :root {
+  --color-background: var(--vt-c-white);
+  --color-background-soft: var(--vt-c-white-soft);
+  --color-background-mute: var(--vt-c-white-mute);
+
+  --color-border: var(--vt-c-divider-light-2);
+  --color-border-hover: var(--vt-c-divider-light-1);
+
+  --color-heading: var(--vt-c-text-light-1);
+  --color-text: var(--vt-c-text-light-1);
+
+  --section-gap: 160px;
+} */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--vt-c-black);
+    --color-background-soft: var(--vt-c-black-soft);
+    --color-background-mute: var(--vt-c-black-mute);
+
+    --color-border: var(--vt-c-divider-dark-2);
+    --color-border-hover: var(--vt-c-divider-dark-1);
+
+    --color-heading: var(--vt-c-text-dark-1);
+    --color-text: var(--vt-c-text-dark-2);
+  }
+} */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
