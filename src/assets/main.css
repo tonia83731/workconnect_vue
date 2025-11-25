@@ -1,36 +1,176 @@
 @import 'tailwindcss';
-@import './base.css';
+
+@theme inline {
+  /* Backgrounds */
+  --color-background: var(--background);
+  --color-card-background: var(--card-background);
+
+  /* Text / Foreground */
+  --color-foreground: var(--foreground);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-disabled: var(--foreground-disabled);
+
+  /* Actions */
+  --color-action-background: var(--action-background);
+  --color-action-text: var(--action-text);
+  --color-action-disabled: var(--action-disabled);
+
+  --color-action-background-secondary: var(--action-background-secondary);
+  --color-action-text-secondary: var(--action-text-secondary);
+  --color-action-secondary-disabled: var(--action-secondary-disabled);
+
+  /* Borders */
+  --color-line: var(--border);
+  --color-line-secondary: var(--border-secondary);
+  --color-line-disabled: var(--border-disabled);
+
+  /* Inputs */
+  --color-input-background: var(--input-background);
+  --color-input-foreground: var(--input-foreground);
+  --color-input-placeholder: var(--input-placeholder);
+  --color-input-border: var(--input-border);
+  --color-input-disabled: var(--input-disabled);
+
+  /* Shadows */
+  --shadow-sm: var(--shadow-sm-token);
+  --shadow-md: var(--shadow-md-token);
+
+  --drop-shadow-sm: var(--drop-shadow-sm-token);
+  --drop-shadow-md: var(--drop-shadow-md-token);
+
+  /* Fonts */
+  --font-noto-sans: var(--font-noto-sans);
+  --font-oswald: var(--font-oswald);
+}
+
+:root {
+  /* Light Mode Defaults */
+  --background: #ffffff;
+  --card-background: #ffffff;
+  --foreground: #0f172a;
+  --foreground-secondary: #64748b;
+  --foreground-disabled: #cbd5e1;
+
+  --action-background: #4f46e5;
+  --action-text: #ffffff;
+  --action-disabled: #a5b4fc;
+
+  --action-background-secondary: #f1f5f9;
+  --action-text-secondary: #334155;
+  --action-secondary-disabled: #f8fafc;
+
+  --border: #e2e8f0;
+  --border-secondary: #f1f5f9;
+  --border-disabled: #f8fafc;
+
+  --input-background: #ffffff;
+  --input-foreground: #0f172a;
+  --input-placeholder: #94a3b8;
+  --input-border: #cbd5e1;
+  --input-disabled: #f1f5f9;
+
+  --shadow-sm-token: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md-token: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+                     0 2px 4px -1px rgb(0 0 0 / 0.06);
+
+  --drop-shadow-sm-token: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
+  --drop-shadow-md-token: drop-shadow(0 4px 3px rgb(0 0 0 / 0.1))
+                           drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+
+  --font-noto-sans: 'Noto Sans TC', sans-serif;
+  --font-oswald: 'Oswald', sans-serif;
+}
+
+[data-theme="dark"]  {
+  /* Dark Mode Overrides */
+  --background: #0f172a;
+  --card-background: #1e293b;
+  --foreground: #f8fafc;
+  --foreground-secondary: #94a3b8;
+  --foreground-disabled: #475569;
+
+  --action-background: #6366f1;
+  --action-text: #ffffff;
+  --action-disabled: #4338ca;
+
+  --action-background-secondary: #1e293b;
+  --action-text-secondary: #e2e8f0;
+  --action-secondary-disabled: #0f172a;
+
+  --border: #1e293b;
+  --border-secondary: #334155;
+  --border-disabled: #1e293b;
+
+  --input-background: #1e293b;
+  --input-foreground: #f8fafc;
+  --input-placeholder: #64748b;
+  --input-border: #334155;
+  --input-disabled: #0f172a;
+
+  --shadow-sm-token: 0 1px 2px 0 rgb(255 255 255 / 0.1);
+  --shadow-md-token: 0 4px 6px -1px rgb(255 255 255 / 0.15),
+                    0 2px 4px -1px rgb(255 255 255 / 0.1);
+
+  --drop-shadow-sm-token: drop-shadow(0 1px 1px rgb(255 255 255 / 0.1));
+  --drop-shadow-md-token: drop-shadow(0 4px 3px rgb(255 255 255 / 0.15))
+                         drop-shadow(0 2px 2px rgb(255 255 255 / 0.1));
+}
+
+body {
+  min-height: 100vh;
+  color: var(--foreground);
+  background: var(--background);
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family:
+  var(--font-oswald),
+  var(--font-noto-sans),
+  -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  Roboto,
+  'Helvetica Neue',
+  sans-serif;
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+h1, h2, h3 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.25rem;
 }
 
-@media (min-width: 1024px) {
+.header-card {
+  background-color: var(--card-background);
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+
+
+@media screen and (min-width: 796px) {
   body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    font-size: 16px;
   }
 }
