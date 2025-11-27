@@ -1,16 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import WorkspaceLayout from '@/components/layout/WorkspaceLayout.vue'
+</script>
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <WorkspaceLayout :title="'Folders and Todos'">
+    <template #workspace_layout>
+      <div class=""></div>
+    </template>
+  </WorkspaceLayout>
 </template>
-
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>

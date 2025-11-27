@@ -25,11 +25,15 @@ watch(theme, (newTheme) => {
 </script>
 <template>
   <header
-    class="fixed top-0 w-full h-[45px] md:h-[60px] px-4 md:px-6 header-card flex items-center"
-    :class="props.includeIcon ? 'left-0 justify-between gap-4' : 'justify-end'"
+    class="fixed top-0 h-[45px] md:h-[60px] px-4 md:px-6 header-card flex justify-between gap-4 items-center"
+    :class="
+      props.includeIcon
+        ? 'left-0 w-full'
+        : 'left-[60px] lg:left-[240px] w-[calc(100%-60px)] lg:w-[calc(100%-240px)] lg:justify-end'
+    "
   >
-    <router-link v-if="props.includeIcon" to="/" class="">
-      <h3>WORKCONNECT</h3>
+    <router-link to="/" class="text-xl font-bold" :class="includeIcon ? '' : 'lg:hidden'">
+      WORKCONNECT
     </router-link>
 
     <nav class="flex items-center gap-2">

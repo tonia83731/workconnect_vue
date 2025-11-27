@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 type Numberish = number | string
 const props = withDefaults(
   defineProps<{
@@ -9,8 +11,8 @@ const props = withDefaults(
   },
 )
 
-const width = Number(props.size)
-const height = (width / 5) * 3
+const width = computed(() => Number(props.size))
+const height = computed(() => (width.value / 5) * 3)
 </script>
 <template>
   <svg

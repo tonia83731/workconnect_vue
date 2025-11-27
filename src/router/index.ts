@@ -50,22 +50,22 @@ const router = createRouter({
       name: 'workspace',
       children: [
         {
-          path: '/todo',
+          path: 'todo',
           name: 'todo',
           component: TodoView,
         },
         {
-          path: '/vote',
+          path: 'vote',
           name: 'vote',
           component: VoteView,
         },
         {
-          path: '/member',
+          path: 'member',
           name: 'member',
           component: MemberView,
         },
         {
-          path: '/setting',
+          path: 'setting',
           name: 'setting',
           component: SettingView,
         },

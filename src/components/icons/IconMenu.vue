@@ -1,8 +1,13 @@
 <script setup lang="ts">
 type Numberish = number | string
-const props = defineProps<{
-  size?: Numberish
-}>()
+const props = withDefaults(
+  defineProps<{
+    size?: Numberish
+  }>(),
+  {
+    size: 14,
+  },
+)
 
 const width = Number(props.size ?? 14)
 const height = (width / 7) * 6
