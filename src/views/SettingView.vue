@@ -3,8 +3,6 @@ import WorkspaceLayout from '@/components/layout/WorkspaceLayout.vue'
 </script>
 <template>
   <WorkspaceLayout :title="'Settings'">
-    <template #workspace_layout>
-      <div class=""></div>
-    </template>
+    <template #workspace_layout> </template>
   </WorkspaceLayout>
 </template>
