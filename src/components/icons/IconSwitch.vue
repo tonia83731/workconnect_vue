@@ -9,7 +9,6 @@ const props = withDefaults(
   },
 )
 </script>
-
 <template>
   <svg
     :width="props.size"
@@ -23,7 +22,7 @@ const props = withDefaults(
     <path
       stroke-linecap="round"
       stroke-linejoin="round"
-      d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+      d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
     />
   </svg>
 </template>
