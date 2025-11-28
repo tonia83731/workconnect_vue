@@ -31,6 +31,7 @@ const fixedSizeMap = {
 const center = 'flex items-center justify-center'
 
 const shapeClasses = {
+  default: '',
   // ----- Default -----
   'default-sm': rectSizeMap.sm,
   'default-md': rectSizeMap.md,
