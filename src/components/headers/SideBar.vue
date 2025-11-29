@@ -48,7 +48,7 @@ const handleSidebarToggle = () => {
 </script>
 <template>
   <header
-    class="fixed z-[999] top-0 left-0 lg:w-[240px] h-full max-h-screen header-card flex flex-col justify-between"
+    class="fixed z-[888] top-0 left-0 lg:w-[240px] h-full max-h-screen header-card flex flex-col justify-between"
     :class="isToggle ? 'w-[240px]' : 'w-[60px]'"
   >
     <div class="flex flex-col gap-[24px] lg:gap-[45px]">

@@ -20,15 +20,19 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
     "@tanstack/vue-query": "^5.91.2",
+    "@vuepic/vue-datepicker": "^12.0.5",
     "pinia": "^3.0.3",
     "tailwindcss": "^4.1.17",
+    "vee-validate": "^4.15.1",
     "vue": "^3.5.22",
-    "vue-router": "^4.6.3"
+    "vue-router": "^4.6.3",
+    "vue-select": "^4.0.0-beta.6"
   },
   "devDependencies": {
     "@prettier/plugin-oxc": "^0.0.4",
     "@tsconfig/node22": "^22.0.2",
     "@types/node": "^22.18.11",
+    "@types/vue-select": "^3.16.8",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-typescript": "^14.6.0",

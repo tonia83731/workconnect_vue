@@ -6,6 +6,7 @@ import WorkspaceLayout from '@/components/layout/WorkspaceLayout.vue'
 import ButtonDefault from '@/components/ButtonDefault.vue'
 import IconPinned from '@/components/icons/IconPinned.vue'
 import IconPinnedOutline from '@/components/icons/IconPinnedOutline.vue'
+import ModalLayout from '@/components/layout/ModalLayout.vue'
 
 interface IFolder {
   _id: string
@@ -603,12 +604,14 @@ const dummyData: IFolder[] = [
 ]
 
 const hasMoreData = ref(true)
+const createToggle = ref<"folder" | "todo" | null>(null)
 
 const itemsPerPage = 6
 const currPage = ref(1)
 const startIdx = computed(() => (currPage.value - 1) * itemsPerPage)
 const endIdx = computed(() => startIdx.value + itemsPerPage)
 
+dummyData.sort((a, b) => a.isPinned === b.isPinned ? 0 : a.isPinned ? -1 : 1)
 const showedFolder = ref<IFolder[]>(dummyData.slice(0, 6))
 const selectedFolder = ref<IFolder | null>(null)
 const handleFolderShowedMore = () => {
@@ -621,6 +624,35 @@ const handleFolderShowedMore = () => {
 }
 const handleFolderSelect = (f: IFolder) => {
   selectedFolder.value = f
+}
+
+const handleFolderPinned = (folderId: string, currPinned: boolean) => {
+  dummyData.forEach((f) => {
+    if (f._id === folderId) {
+      f.isPinned = !currPinned
+    }
+  })
+
+  dummyData.sort((a, b) => a.isPinned === b.isPinned ? 0 : a.isPinned ? -1 : 1)
+
+  showedFolder.value = dummyData.slice(0, endIdx.value)
+}
+
+const handleCreateFolderToggle = (type?: "folder" | "todo") => {
+  if (!type) {
+    createToggle.value = null
+    return
+  }
+  createToggle.value = type
+}
+
+const handleCreateData = () => {
+  // checked created type
+
+  // formated data
+
+  // untoggle modal
+  createToggle.value = null
 }
 </script>
 <template>
@@ -636,21 +668,24 @@ const handleFolderSelect = (f: IFolder) => {
               shape="default-sm"
               color="primary"
               class="cursor-pointer rounded-md flex justify-center items-center gap-2"
-            >
+              :onClick="() => handleCreateFolderToggle('folder')"
+              >
               <template #button>
                 <IconPlus />
                 <div class="hidden md:block">Add Folder</div>
               </template>
             </button-default>
           </div>
-          <div class="">
+          <div class="flex flex-col gap-2">
             <!-- content -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-x-1.5 gap-y-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-1.5 gap-y-2">
               <button
                 v-for="f in showedFolder"
                 :key="f._id"
-                class="border border-line pl-4 pr-2 py-1.5 rounded-md"
-              >
+                class="border pl-4 pr-2 py-1.5 rounded-md"
+                :class="selectedFolder && selectedFolder._id === f._id ? 'border-action-background' : 'border-line'"
+                @click="() => handleFolderSelect(f)"
+                >
                 <div class="flex justify-between items-center gap-2">
                   <div class="flex justify-center items-center gap-2">
                     <IconFolder class="opacity-60" size="20" />
@@ -660,7 +695,10 @@ const handleFolderSelect = (f: IFolder) => {
                     shape="underline-sm"
                     color="text-default"
                     :class="!f.isPinned ? 'opacity-60' : ''"
-                    @click="() => handleFolderSelect(f)"
+                    @click="(e) => {
+                      e?.stopPropagation();
+                      handleFolderPinned(f._id, f.isPinned)
+                    }"
                   >
                     <template #button>
                       <component size="14" :is="f.isPinned ? IconPinned : IconPinnedOutline" />
@@ -673,7 +711,7 @@ const handleFolderSelect = (f: IFolder) => {
               :onClick="() => handleFolderShowedMore()"
               shape="underline-sm"
               color="text-default"
-              class="w-full text-center mt-2"
+              class="w-full text-center"
               v-if="hasMoreData"
             >
               <template #button> Showed more data... </template>
@@ -689,15 +727,55 @@ const handleFolderSelect = (f: IFolder) => {
               shape="default-sm"
               color="primary"
               class="cursor-pointer rounded-md flex justify-center items-center gap-2"
-            >
+              :onClick="() => handleCreateFolderToggle('todo')"
+              >
               <template #button>
                 <IconPlus />
-                <div class="hidden md:block">Add Folder</div>
+                <div class="hidden md:block">Add Todo</div>
               </template>
             </button-default>
+          </div>
+          <!-- content -->
+          <div v-if="selectedFolder" class="flex flex-col gap-1.5">
+            <div v-for="t in selectedFolder?.todos" :key="t._id" class="">
+              <h5 class="">{{ t.title }}</h5>
+            </div>
+
+          </div>
+          <div v-else class="text-foreground-disabled text-center">
+            No folder selected.
           </div>
         </div>
       </div>
     </template>
   </WorkspaceLayout>
+  <ModalLayout :title="createToggle === 'folder' ? 'Add Folder' : 'Add Todo'" :isToggle="createToggle" :onClose="() => handleCreateFolderToggle()">
+    <template #modal_content>
+      hello world
+    </template>
+    <template #modal_button>
+      <div class="flex justify-end items-center gap-2">
+        <button-default
+          shape="default-sm"
+          color="secondary"
+          class="cursor-pointer rounded-md flex justify-center items-center gap-2"
+          :onClick="() => handleCreateFolderToggle()"
+          >
+          <template #button>
+            <div>Cancel</div>
+          </template>
+        </button-default>
+        <button-default
+          shape="default-sm"
+          color="primary"
+          class="cursor-pointer rounded-md flex justify-center  items-center gap-2"
+          :onClick="handleCreateData"
+          >
+          <template #button>
+            <div>Add</div>
+          </template>
+        </button-default>
+      </div>
+    </template>
+  </ModalLayout>
 </template>

@@ -6,7 +6,7 @@ const props = withDefaults(
     color?: keyof typeof colorClasses
     class?: string
     title?: string
-    onClick?: () => void
+    onClick?: (e?: MouseEvent) => void
   }>(),
   {
     type: 'button',

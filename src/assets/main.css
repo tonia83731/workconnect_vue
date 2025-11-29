@@ -31,6 +31,15 @@
   --color-input-border: var(--input-border);
   --color-input-disabled: var(--input-disabled);
 
+  --color-error: var(--error);
+  --color-error-foreground: var(--error-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
   /* Shadows */
   --shadow-sm: var(--shadow-sm-token);
   --shadow-md: var(--shadow-md-token);
@@ -73,6 +82,15 @@
   --shadow-md-token: 0 4px 6px -1px rgb(0 0 0 / 0.1),
                      0 2px 4px -1px rgb(0 0 0 / 0.06);
 
+  --error: #ef4444;               /* red-500 */
+  --error-foreground: #ffffff;
+
+  --warning: #f59e0b;             /* amber-500 */
+  --warning-foreground: #1e293b;
+
+  --success: #22c55e;             /* green-500 */
+  --success-foreground: #ffffff;
+
   --drop-shadow-sm-token: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
   --drop-shadow-md-token: drop-shadow(0 4px 3px rgb(0 0 0 / 0.1))
                            drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
@@ -110,6 +128,15 @@
   --shadow-sm-token: 0 1px 2px 0 rgb(255 255 255 / 0.1);
   --shadow-md-token: 0 4px 6px -1px rgb(255 255 255 / 0.15),
                     0 2px 4px -1px rgb(255 255 255 / 0.1);
+
+  --error: #f87171;               /* red-400 */
+  --error-foreground: #0f172a;
+
+  --warning: #fbbf24;             /* amber-400 */
+  --warning-foreground: #0f172a;
+
+  --success: #4ade80;             /* green-400 */
+  --success-foreground: #0f172a;
 
   --drop-shadow-sm-token: drop-shadow(0 1px 1px rgb(255 255 255 / 0.1));
   --drop-shadow-md-token: drop-shadow(0 4px 3px rgb(255 255 255 / 0.15))
