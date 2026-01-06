@@ -25,6 +25,7 @@ export interface Workspace {
   members: WorkspaceMember[]
 }
 
+// work log
 export interface WorkspaceActivity {
   _id: string
   workspaceId: string
@@ -52,6 +53,8 @@ export interface Bucket {
   order: number
   isDeleted: boolean
   deletedAt: Date
+
+  folders?: Folder[]
 }
 
 export interface Folder {
@@ -59,12 +62,13 @@ export interface Folder {
   workspaceId: string
   bucketId: string
   title: string
-  todoCount: number
   createdAt: Date
   updatedAt: Date
   order: number
   isDeleted: boolean
   deletedAt: Date
+  todoCount: number
+  todos?: Todo[]
 }
 
 export interface Todo {
@@ -74,9 +78,9 @@ export interface Todo {
   folderId: string
   title: string
   status: 'PENDING' | 'IN_PROGRESS' | 'AWAITING_APPROVAL' | 'DONE'
-  assignTo: WorkspaceMember[] // max: 3 members
+  assignTo: string[] // max: 3 members // workspace.members -> userId
   deadline: Date
-  tags: TodoTag[]
+  tags: string[] // From TodoTag
   checklists: TodoChecklist[]
   text: string
   files: {
