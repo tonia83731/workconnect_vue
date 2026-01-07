@@ -4,8 +4,8 @@ import { RouterLink } from 'vue-router'
 import IconMoon from '@/components/icons/IconMoon.vue'
 import IconSunSolid from '@/components/icons/IconSunSolid.vue'
 import IconLogout from '@/components/icons/IconLogout.vue'
-import IconUser from '@/components/icons/IconUser.vue'
 import ButtonDefault from '@/components/ButtonDefault.vue'
+import IconBase from '../icons/IconBase.vue'
 
 const props = withDefaults(
   defineProps<{
@@ -40,7 +40,7 @@ watch(theme, (newTheme) => {
       <!-- Dark/Light Mode -->
       <button-default :title="'Mode'" :shape="'circle-md'" :color="'border-default'">
         <template #button>
-          <component :is="theme === 'dark' ? IconMoon : IconSunSolid" />
+          <IconBase :type="theme === 'dark' ? 'moon' : 'sunSolid'" />
         </template>
       </button-default>
       <!-- Language -->
@@ -58,14 +58,14 @@ watch(theme, (newTheme) => {
         :color="'border-default'"
       >
         <template #button>
-          <IconLogout :size="18" />
+          <IconBase type="logout" :size="18" />
         </template>
       </button-default>
       <router-link
         to="#"
         className="ml-2 bg-foreground/30 w-8 h-8 md:w-10 md:h-10 rounded-full flex justify-center items-center hover:bg-foreground hover:text-background"
       >
-        <IconUser :size="16" />
+        <IconBase type="user" :size="16" />
       </router-link>
     </nav>
   </header>

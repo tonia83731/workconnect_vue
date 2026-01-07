@@ -50,7 +50,7 @@ const router = createRouter({
       name: 'workspace',
       children: [
         {
-          path: '/:bucketId/todo',
+          path: '/todo',
           name: 'todo',
           component: TodoView,
         },
